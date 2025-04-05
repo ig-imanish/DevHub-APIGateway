@@ -28,7 +28,7 @@ public class JwtUtil {
     public Mono<TokenResponse> validateAndGetEmail(String token) {
     return webClient
         .post()
-        .uri("/validateToken")
+        .uri("/auth/validateToken")
         .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
         .retrieve()
         .bodyToMono(TokenResponse.class).onErrorResume(e -> {
